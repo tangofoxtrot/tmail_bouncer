@@ -13,7 +13,7 @@ module TmailBouncer
 
     def determine_original_message_part
       self.original_message = @email.parts.detect do |part|
-        part.content_type == "message/rfc822"
+        part.content_type == "message/rfc822" || part.content_type == "text/rfc822-headers"
       end      
     end
 
@@ -33,7 +33,7 @@ module TmailBouncer
     end
     
     def parse_original_recipient
-      self.original_recipient = self.status_info["Final-Recipient"].to_s.gsub("Final-Recipient: ","").gsub("rfc822;","").strip
+      self.original_recipient = self.status_info["Final-Recipient"].to_s.gsub(%r%Final-Recipient: %i,"").gsub(%r%rfc822;%i,"").strip
     end
 
     def parse_original_sender

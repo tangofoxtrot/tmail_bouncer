@@ -60,6 +60,45 @@ class TmailBouncerTest < Test::Unit::TestCase
     end 
                     
   end
+
+
+  context "AOL Bounce" do    
+    setup do
+      @email = read_email('aol.eml')
+    end
+    
+    should "be a tmail object" do
+      assert @email.is_a?(TMail::Mail), "Whoops Im a #{@email.class}"
+    end
+
+    should "return StandardBouncer" do
+      assert @email.undeliverable_info.is_a?(TmailBouncer::StandardBouncer) , "Whoops Im a #{@email.class}"
+    end
+    
+    should "detect bounced" do
+      assert_equal @email.undeliverable_info.status, "Failure"
+    end
+    
+    should "detect original sender" do
+      assert_equal @email.undeliverable_info.original_sender, "joe@example.com"      
+    end
+    
+    should "detect original recipient" do
+      assert_equal @email.undeliverable_info.original_recipient, "fred@aol.com"      
+    end
+    
+    should "detect original subject" do
+      assert_equal @email.undeliverable_info.original_subject, "I like turtles"            
+    end    
+    
+    should "detect original_message_id" do
+      assert_equal @email.undeliverable_info.original_message_id, "<1234.1212@example.com>"
+    end
+    
+    should "return status of failure" do
+      assert_equal "Failure",  @email.undeliverable_info.status
+    end           
+  end
   
 
 protected
