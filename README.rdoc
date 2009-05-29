@@ -1,6 +1,8 @@
 = tmail_bouncer
 
-Description goes here.
+Additional functionality to Tmail to handle and parse bounce back emails.
+
+Original code came from http://github.com/dmarkow/tmail_bounce_parser/tree/master
 
 == Copyright
 
