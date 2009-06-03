@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{tmail_bouncer}
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["tangofoxtrot"]
-  s.date = %q{2009-05-29}
+  s.date = %q{2009-06-03}
   s.email = %q{richard.luther@gmail.com}
   s.extra_rdoc_files = [
     "LICENSE",
@@ -17,13 +17,16 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "lib/bouncers/base.rb",
+    "lib/bouncers/box_full_bouncer.rb",
     "lib/bouncers/no_bouncer.rb",
     "lib/bouncers/standard_bouncer.rb",
     "lib/tmail_bouncer.rb",
+    "test/fixtures/aol.eml",
+    "test/fixtures/box_full.eml",
     "test/fixtures/yahoo.eml",
     "test/fixtures/yahoo_legit.eml",
     "test/test_helper.rb",
-    "test/unit/tmail_bouncer_test.rb"
+    "test/unit/test_tmail_bouncer.rb"
   ]
   s.has_rdoc = true
   s.homepage = %q{http://github.com/tangofoxtrot/tmail_bouncer}
@@ -33,7 +36,7 @@ Gem::Specification.new do |s|
   s.summary = %q{TODO}
   s.test_files = [
     "test/test_helper.rb",
-    "test/unit/tmail_bouncer_test.rb"
+    "test/unit/test_tmail_bouncer.rb"
   ]
 
   if s.respond_to? :specification_version then

@@ -78,7 +78,7 @@ Last-Attempt-Date: Thu, 28 May 2009 19:20:25 -0400
 Content-Type: text/rfc822-headers
 
 Received: from mail.example.com (mail.example.com [1.1.1.1]) by rly-dg01.mx.aol.com (v123.4) with ESMTP id MAILRELAYINDG013-59e4a1f1c241e7; Thu, 28 May 2009 19:20:04 -0400
-Received: from mail.example.com (example.com [8.12.160.194])
+Received: from mail.example.com (example.com [1.1.1.1)
 	by mail.example.com (Postfix) with ESMTP id DF6A5178462
 	for <fred@aol.com>; Thu, 28 May 2009 16:19:53 -0700 (PDT)
 Date: Thu, 28 May 2009 16:18:36 -0700
