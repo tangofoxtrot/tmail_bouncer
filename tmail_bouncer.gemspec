@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{tmail_bouncer}
-  s.version = "0.1.1"
+  s.version = "0.1.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["tangofoxtrot"]
@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
     "lib/tmail_bouncer.rb",
     "test/fixtures/aol.eml",
     "test/fixtures/box_full.eml",
+    "test/fixtures/out_of_office.eml",
     "test/fixtures/yahoo.eml",
     "test/fixtures/yahoo_legit.eml",
     "test/test_helper.rb",
