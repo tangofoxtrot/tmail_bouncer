@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{tmail_bouncer}
-  s.version = "0.1.2"
+  s.version = "0.1.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["tangofoxtrot"]
-  s.date = %q{2009-06-03}
+  s.date = %q{2009-06-04}
   s.email = %q{richard.luther@gmail.com}
   s.extra_rdoc_files = [
     "LICENSE",
@@ -19,10 +19,13 @@ Gem::Specification.new do |s|
     "lib/bouncers/base.rb",
     "lib/bouncers/box_full_bouncer.rb",
     "lib/bouncers/no_bouncer.rb",
+    "lib/bouncers/out_of_office_bouncer.rb",
     "lib/bouncers/standard_bouncer.rb",
     "lib/tmail_bouncer.rb",
     "test/fixtures/aol.eml",
     "test/fixtures/box_full.eml",
+    "test/fixtures/legit_multipart.eml",
+    "test/fixtures/legit_with_quota.eml",
     "test/fixtures/out_of_office.eml",
     "test/fixtures/yahoo.eml",
     "test/fixtures/yahoo_legit.eml",
