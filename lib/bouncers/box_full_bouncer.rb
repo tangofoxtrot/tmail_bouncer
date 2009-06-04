@@ -3,7 +3,7 @@ module TmailBouncer
     
     def self.recognize?(email)
       if email.parts.size == 0
-        email.body =~ /quota/
+        email.body.split("\n")[0..3].detect {|line| line =~ /exceeding its mailbox quota/ }
       end
     end
 

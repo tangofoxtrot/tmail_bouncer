@@ -51,7 +51,7 @@ class TmailBouncerTest < Test::Unit::TestCase
       assert @email.is_a?(TMail::Mail), "Whoops Im a #{@email.class}"
     end
 
-    should "return NoBouce" do
+    should "return NoBounce" do
       assert @email.undeliverable_info.is_a?(TmailBouncer::NoBouncer) , "Whoops Im a #{@email.class}"
     end
 
@@ -139,9 +139,84 @@ class TmailBouncerTest < Test::Unit::TestCase
   end
 
   context "Out of Office Bounce" do    
-      
+    setup do
+      @email = read_email('out_of_office.eml')
+    end
+    
+    should "be a tmail object" do
+      assert @email.is_a?(TMail::Mail), "Whoops Im a #{@email.class}"
+    end
+
+    should "return OutOfOfficeBouncer" do
+      assert @email.undeliverable_info.is_a?(TmailBouncer::OutOfOfficeBouncer) , "Whoops Im a #{@email.class}"
+    end
+    
+    should "detect bounced" do
+      assert_equal @email.undeliverable_info.status, "Failure"
+    end
+    
+    should "detect original sender" do
+      assert_equal @email.undeliverable_info.original_sender, "joe@example.com"      
+    end
+    
+    should "detect original recipient" do
+      assert_equal @email.undeliverable_info.original_recipient, "fred@example.com"      
+    end
+    
+    should "detect original subject" do
+      assert_equal @email.undeliverable_info.original_subject, "Out of Office: I like turtles"            
+    end    
+    
+    should "detect original_message_id" do
+      assert_equal @email.undeliverable_info.original_message_id, "<1234.1212@example.com>"
+    end
+    
+    should "return status of failure" do
+      assert_equal "Failure",  @email.undeliverable_info.status
+    end          
   end
 
+  context "Legit Email with quota words" do
+  
+    setup do
+      @email = read_email('legit_with_quota.eml')
+    end  
+    
+
+    should "be a tmail object" do
+      assert @email.is_a?(TMail::Mail), "Whoops Im a #{@email.class}"
+    end
+
+    should "return NoBounce" do
+      assert @email.undeliverable_info.is_a?(TmailBouncer::NoBouncer) , "Whoops Im a #{@email.class}"
+    end
+
+    should "return status of Success" do
+      assert_equal "Success",  @email.undeliverable_info.status
+    end 
+                    
+  end
+
+
+  context "Legit Multipart Email" do
+  
+    setup do
+      @email = read_email('legit_multipart.eml')
+    end  
+
+    should "be a tmail object" do
+      assert @email.is_a?(TMail::Mail), "Whoops Im a #{@email.class}"
+    end
+
+    should "return NoBounce" do
+      assert @email.undeliverable_info.is_a?(TmailBouncer::NoBouncer) , "Whoops Im a #{@email.class}"
+    end
+
+    should "return status of Success" do
+      assert_equal "Success",  @email.undeliverable_info.status
+    end 
+                    
+  end
 
 protected
 

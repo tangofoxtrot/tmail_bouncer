@@ -16,7 +16,7 @@ module TmailBouncer
     end
     
     def self.available_bouncers
-      @@bouncers ||= [TmailBouncer::StandardBouncer, TmailBouncer::BoxFullBouncer]
+      @@bouncers ||= [TmailBouncer::StandardBouncer, TmailBouncer::BoxFullBouncer, TmailBouncer::OutOfOfficeBouncer]
     end 
 
 
