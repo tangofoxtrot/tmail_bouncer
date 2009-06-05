@@ -76,7 +76,8 @@ module TmailBouncer
     end
 
     def original_recipient
-      @original_recipient ||= self.status_info["Final-Recipient"].to_s.gsub(%r%Final-Recipient: %i,"").gsub(%r%rfc822;%i,"").strip
+      recip_key = self.status_info["Final-Recipient"] || self.status_info["Final-recipient"]
+      @original_recipient ||= recip_key.to_s.gsub(%r%Final-Recipient: %i,"").gsub(%r%rfc822;%i,"").strip
     end
 
     def status_info
